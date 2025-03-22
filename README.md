@@ -8,6 +8,8 @@ Añadir nuevos tipos de notificaciones sin modificar el código existente (Princ
 Centralizar la lógica de creación de notificaciones
 Permitir que cada tipo de notificación tenga su propia implementación específica
 
+
+
 # Problema 2: Conexión a Bases de Datos en Sistema de Gestión Empresarial
 ## Patrón Creacional: Singleton
 Un sistema de gestión empresarial necesita mantener una única conexión a la base de datos para evitar sobrecarga de conexiones y garantizar que todas las operaciones compartan el mismo estado de transacción cuando sea necesario.
@@ -18,6 +20,8 @@ Evita múltiples conexiones innecesarias que consumen recursos
 Garantiza consistencia en las operaciones de base de datos
 Proporciona un punto centralizado para gestionar la conexión
 Facilita la implementación de un pool de conexiones si fuera necesario escalar
+
+
 
 # Problema 3: Editor de Documentos Multiplataforma
 ## Patrón Creacional: Abstract Factory
@@ -31,29 +35,38 @@ Aísla el código específico de la plataforma del resto de la aplicación
 Hace que agregar soporte para una nueva plataforma sea más sencillo
 
 
+
 # Diagramas
 
 Explicación de los diagramas:
-1. Factory Method (Sistema de Notificaciones)
+## 1. Factory Method (Sistema de Notificaciones)
 
 Creator (NotificadorBase): Define el método factory abstracto para crear notificaciones
 ConcreteCreators (NotificadorSMS, NotificadorEmail, NotificadorPush): Implementan el método factory para crear notificaciones específicas
 Product (NotificacionBase): Define la interfaz para los objetos que crea el factory method
 ConcreteProducts (NotificacionSMS, NotificacionEmail, NotificacionPush): Implementan la interfaz específica para cada tipo de notificación
 
-2. Singleton (Conexión a Base de Datos)
+## Diagrama UML de Factory Method
+![alt text](factory-method-uml.png)
+
+## 2. Singleton (Conexión a Base de Datos)
 
 Singleton (ConexionBaseDatos): Contiene una instancia estática de sí misma, un constructor privado y un método público para obtener la instancia
 Proporciona métodos adicionales para ejecutar consultas y cerrar la conexión
 Garantiza que solo exista una instancia en toda la aplicación
 
-3. Abstract Factory (Editor de Documentos Multiplataforma)
+## Diagrama UML de Singleton
+![alt text](singleton-uml.png)
+
+## 3. Abstract Factory (Editor de Documentos Multiplataforma)
 
 AbstractFactory (FabricaUIBase): Define la interfaz para crear familias de productos relacionados
 ConcreteFactories (FabricaUIWindows, FabricaUIMacOS, FabricaUILinux): Implementan la creación de productos específicos para cada plataforma
 AbstractProducts (BotonBase, MenuBase, DialogoBase): Definen interfaces para cada tipo de producto
 ConcreteProducts (BotonWindows, MenuMacOS, etc.): Implementan las interfaces para cada plataforma específica
 
+## Diagrama UML de Abstract Factory
+![alt text](abstract-factory-uml.png)
 
 # Análisis de la implementación
 ## Implementación de Factory Method
